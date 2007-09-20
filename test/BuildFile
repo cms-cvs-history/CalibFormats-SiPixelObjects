@@ -1,0 +1,18 @@
+<environment>
+  <use name=CondFormats/DataRecord>
+  <use name=CalibFormats/SiPixelObjects>
+  <use name=CondCore/DBOutputService>
+  <library file=SiPixelCalibConfigurationObjectMaker.cc name=SiPixelCalibConfigurationObjectMaker>
+    <flags EDM_PLUGIN=1>
+  </library>
+</environment>
+
+<environment>
+  <use name=CondFormats/DataRecord>
+  <use name=CalibFormats/SiPixelObjects>
+  <use name=CondCore/DBOutputService>
+  <library file=SiPixelCalibConfigurationReadDb.cc name=SiPixelCalibConfigurationReadDb>
+    <flags EDM_PLUGIN=1>
+  </library>
+</environment>
+
