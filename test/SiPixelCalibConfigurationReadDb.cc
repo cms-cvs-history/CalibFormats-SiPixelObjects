@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Thu Sep 20 12:13:20 CEST 2007
-// $Id$
+// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.1 2007/09/20 12:27:02 fblekman Exp $
 //
 //
 
@@ -34,6 +34,7 @@
 #include "FWCore/Framework/interface/ESHandle.h"
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include "CondFormats/DataRecord/interface/SiPixelCalibConfigurationRcd.h"
+#include <iostream>
 //
 // class decleration
 //
@@ -94,8 +95,7 @@ SiPixelCalibConfigurationReadDb::analyze(const edm::Event& iEvent, const edm::Ev
 
    ESHandle<SiPixelCalibConfiguration> calib;
    iSetup.get<SiPixelCalibConfigurationRcd>().get(calib);
-   calib->print();
-
+   std::cout <<*calib<< std::endl;
 }
 
 
