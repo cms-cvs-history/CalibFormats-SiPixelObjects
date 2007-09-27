@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Thu Sep 20 12:13:20 CEST 2007
-// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.1 2007/09/20 12:27:02 fblekman Exp $
+// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.2 2007/09/24 20:49:58 fblekman Exp $
 //
 //
 
@@ -95,7 +95,57 @@ SiPixelCalibConfigurationReadDb::analyze(const edm::Event& iEvent, const edm::Ev
 
    ESHandle<SiPixelCalibConfiguration> calib;
    iSetup.get<SiPixelCalibConfigurationRcd>().get(calib);
-   std::cout <<*calib<< std::endl;
+   //   std::cout <<*calib<< std::endl;
+   std::cout << "number of triggers: " << calib->NTriggers() << std::endl;
+   std::vector<short> vcalvalues= calib->VCalValues();
+   std::cout << "number of VCAL: " << vcalvalues.size() << std::endl;
+   for(int i=0; i<vcalvalues.size(); ++i){
+     std::cout << "Vcal values " << i << "," << i+1 << " : " << vcalvalues[i] << "," ;
+     ++i;
+     if(i<vcalvalues.size())
+       std::cout << vcalvalues[i];
+     std::cout << std::endl;
+   }
+   std::cout << "column patterns:" << std::endl;
+   for(int i=0; i<calib->ColumnPattern().size(); ++i){
+     std::cout << "column (" << calib->ColumnPattern()[i].first << "," << calib->ColumnPattern()[i].second << ") ";
+     ++i; 
+     if(i<calib->ColumnPattern().size())
+       std::cout <<", ("<< calib->ColumnPattern()[i].first << "," << calib->ColumnPattern()[i].second << ")" ;
+     ++i; 
+     if(i<calib->ColumnPattern().size())
+       std::cout <<", ("<< calib->ColumnPattern()[i].first << "," << calib->ColumnPattern()[i].second << ")" ;
+     ++i; 
+     if(i<calib->ColumnPattern().size())
+       std::cout <<", ("<< calib->ColumnPattern()[i].first << "," << calib->ColumnPattern()[i].second << ")" ;
+     std::cout << std::endl;
+   } 
+   std::cout << "row patterns:" << std::endl;
+   for(int i=0; i<calib->RowPattern().size(); ++i){
+     std::cout << "row (" << calib->RowPattern()[i].first << "," << calib->RowPattern()[i].second << ") ";
+     ++i;   
+     if(i<calib->RowPattern().size())
+       std::cout <<", ("<< calib->RowPattern()[i].first << "," << calib->RowPattern()[i].second << ")" ;
+     ++i;   
+     if(i<calib->RowPattern().size())
+       std::cout <<", ("<< calib->RowPattern()[i].first << "," << calib->RowPattern()[i].second << ")" ;
+     ++i;   
+     if(i<calib->RowPattern().size())
+       std::cout <<", ("<< calib->RowPattern()[i].first << "," << calib->RowPattern()[i].second << ")" ;
+     std::cout<<std::endl;
+   }
+   std::cout << "list of rocs: " << std::endl;
+   for(int i=0; i<calib->ROCIds().size();++i){
+     std::cout << calib->ROCIds()[i]  ;
+     ++i;
+     if(i<calib->ROCIds().size())
+       std::cout << " \t"<< calib->ROCIds()[i];
+     ++i;
+     if(i<calib->ROCIds().size())
+       std::cout << " \t"<< calib->ROCIds()[i];
+     std::cout << std::endl;
+   }
+   
 }
 
 

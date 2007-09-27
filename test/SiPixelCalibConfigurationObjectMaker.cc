@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Wed Sep 19 13:43:52 CEST 2007
-// $Id$
+// $Id: SiPixelCalibConfigurationObjectMaker.cc,v 1.1 2007/09/20 12:27:01 fblekman Exp $
 //
 //
 
@@ -30,6 +30,8 @@
 
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "CalibFormats/SiPixelObjects/interface/SiPixelCalibConfiguration.h"
+#include "CalibFormats/SiPixelObjects/interface/PixelCalibConfiguration.h"
+
 #include "CondCore/DBOutputService/interface/PoolDBOutputService.h"
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include <string>
@@ -98,16 +100,20 @@ SiPixelCalibConfigurationObjectMaker::beginJob(const edm::EventSetup&)
 void 
 SiPixelCalibConfigurationObjectMaker::endJob() { 
   
-   SiPixelCalibConfiguration *myCalib = new SiPixelCalibConfiguration(inputfilename);
-
+   PixelCalibConfiguration fancyCalib(inputfilename);
+   SiPixelCalibConfiguration *myCalib = new SiPixelCalibConfiguration(fancyCalib);
+   
+   string newtag = inputfilename.substr(inputfilename.rfind("/")+1);// only take file name (lets hope that is enough..
+   std::cout << "filling content of  " << inputfilename << " in db with tag " << newtag << std::endl;
+   
    edm::Service<cond::service::PoolDBOutputService> poolDbService;
+   
    if(poolDbService.isAvailable()){
      if(poolDbService->isNewTagRequest("SiPixelCalibConfigurationRcd") ){
        poolDbService->createNewIOV<SiPixelCalibConfiguration>(myCalib,poolDbService->endOfTime(), "SiPixelCalibConfigurationRcd");
      }
      else{
        poolDbService->appendSinceTime<SiPixelCalibConfiguration>(myCalib,poolDbService->currentTime(), "SiPixelCalibConfigurationRcd");
-
      }
    }
 
