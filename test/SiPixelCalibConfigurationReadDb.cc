@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Thu Sep 20 12:13:20 CEST 2007
-// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.2 2007/09/24 20:49:58 fblekman Exp $
+// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.3 2007/09/27 18:27:51 fblekman Exp $
 //
 //
 
@@ -99,7 +99,7 @@ SiPixelCalibConfigurationReadDb::analyze(const edm::Event& iEvent, const edm::Ev
    std::cout << "number of triggers: " << calib->NTriggers() << std::endl;
    std::vector<short> vcalvalues= calib->VCalValues();
    std::cout << "number of VCAL: " << vcalvalues.size() << std::endl;
-   for(int i=0; i<vcalvalues.size(); ++i){
+   for(uint32_t i=0; i<vcalvalues.size(); ++i){
      std::cout << "Vcal values " << i << "," << i+1 << " : " << vcalvalues[i] << "," ;
      ++i;
      if(i<vcalvalues.size())
@@ -107,7 +107,7 @@ SiPixelCalibConfigurationReadDb::analyze(const edm::Event& iEvent, const edm::Ev
      std::cout << std::endl;
    }
    std::cout << "column patterns:" << std::endl;
-   for(int i=0; i<calib->ColumnPattern().size(); ++i){
+   for(uint32_t i=0; i<calib->ColumnPattern().size(); ++i){
      std::cout << "column (" << calib->ColumnPattern()[i].first << "," << calib->ColumnPattern()[i].second << ") ";
      ++i; 
      if(i<calib->ColumnPattern().size())
@@ -121,7 +121,7 @@ SiPixelCalibConfigurationReadDb::analyze(const edm::Event& iEvent, const edm::Ev
      std::cout << std::endl;
    } 
    std::cout << "row patterns:" << std::endl;
-   for(int i=0; i<calib->RowPattern().size(); ++i){
+   for(uint32_t i=0; i<calib->RowPattern().size(); ++i){
      std::cout << "row (" << calib->RowPattern()[i].first << "," << calib->RowPattern()[i].second << ") ";
      ++i;   
      if(i<calib->RowPattern().size())
@@ -135,7 +135,7 @@ SiPixelCalibConfigurationReadDb::analyze(const edm::Event& iEvent, const edm::Ev
      std::cout<<std::endl;
    }
    std::cout << "list of rocs: " << std::endl;
-   for(int i=0; i<calib->ROCIds().size();++i){
+   for(uint32_t i=0; i<calib->ROCIds().size();++i){
      std::cout << calib->ROCIds()[i]  ;
      ++i;
      if(i<calib->ROCIds().size())

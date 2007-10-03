@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Wed Sep 19 13:43:52 CEST 2007
-// $Id: SiPixelCalibConfigurationObjectMaker.cc,v 1.1 2007/09/20 12:27:01 fblekman Exp $
+// $Id: SiPixelCalibConfigurationObjectMaker.cc,v 1.2 2007/09/27 18:27:51 fblekman Exp $
 //
 //
 
@@ -100,10 +100,10 @@ SiPixelCalibConfigurationObjectMaker::beginJob(const edm::EventSetup&)
 void 
 SiPixelCalibConfigurationObjectMaker::endJob() { 
   
-   PixelCalibConfiguration fancyCalib(inputfilename);
-   SiPixelCalibConfiguration *myCalib = new SiPixelCalibConfiguration(fancyCalib);
+  pos::PixelCalibConfiguration fancyCalib(inputfilename);
+  SiPixelCalibConfiguration *myCalib = new SiPixelCalibConfiguration(fancyCalib);
    
-   string newtag = inputfilename.substr(inputfilename.rfind("/")+1);// only take file name (lets hope that is enough..
+  std::string newtag = inputfilename.substr(inputfilename.rfind("/")+1);// only take file name (lets hope that is enough..
    std::cout << "filling content of  " << inputfilename << " in db with tag " << newtag << std::endl;
    
    edm::Service<cond::service::PoolDBOutputService> poolDbService;
