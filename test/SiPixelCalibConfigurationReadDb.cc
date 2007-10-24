@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Thu Sep 20 12:13:20 CEST 2007
-// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.3 2007/09/27 18:27:51 fblekman Exp $
+// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.4 2007/10/03 13:45:00 fblekman Exp $
 //
 //
 
@@ -108,32 +108,24 @@ SiPixelCalibConfigurationReadDb::analyze(const edm::Event& iEvent, const edm::Ev
    }
    std::cout << "column patterns:" << std::endl;
    for(uint32_t i=0; i<calib->ColumnPattern().size(); ++i){
-     std::cout << "column (" << calib->ColumnPattern()[i].first << "," << calib->ColumnPattern()[i].second << ") ";
-     ++i; 
-     if(i<calib->ColumnPattern().size())
-       std::cout <<", ("<< calib->ColumnPattern()[i].first << "," << calib->ColumnPattern()[i].second << ")" ;
-     ++i; 
-     if(i<calib->ColumnPattern().size())
-       std::cout <<", ("<< calib->ColumnPattern()[i].first << "," << calib->ColumnPattern()[i].second << ")" ;
-     ++i; 
-     if(i<calib->ColumnPattern().size())
-       std::cout <<", ("<< calib->ColumnPattern()[i].first << "," << calib->ColumnPattern()[i].second << ")" ;
-     std::cout << std::endl;
+     if(calib->ColumnPattern()[i]!=-1)
+       std::cout << calib->ColumnPattern()[i] ;
+     if(i!=0)
+       std::cout << " ";
+     if(calib->ColumnPattern()[i]==-1)
+       std::cout << "- " ;
    } 
+   std::cout << std::endl;
    std::cout << "row patterns:" << std::endl;
    for(uint32_t i=0; i<calib->RowPattern().size(); ++i){
-     std::cout << "row (" << calib->RowPattern()[i].first << "," << calib->RowPattern()[i].second << ") ";
-     ++i;   
-     if(i<calib->RowPattern().size())
-       std::cout <<", ("<< calib->RowPattern()[i].first << "," << calib->RowPattern()[i].second << ")" ;
-     ++i;   
-     if(i<calib->RowPattern().size())
-       std::cout <<", ("<< calib->RowPattern()[i].first << "," << calib->RowPattern()[i].second << ")" ;
-     ++i;   
-     if(i<calib->RowPattern().size())
-       std::cout <<", ("<< calib->RowPattern()[i].first << "," << calib->RowPattern()[i].second << ")" ;
-     std::cout<<std::endl;
+     if(calib->RowPattern()[i]!=-1)
+       std::cout << calib->RowPattern()[i] ;
+     if(i!=0)
+       std::cout << " ";
+     if(calib->RowPattern()[i]==-1)
+       std::cout << "- ";
    }
+   std::cout << std::endl;
    std::cout << "list of rocs: " << std::endl;
    for(uint32_t i=0; i<calib->ROCIds().size();++i){
      std::cout << calib->ROCIds()[i]  ;
