@@ -1,4 +1,4 @@
- // -*- C++ -*-
+// -*- C++ -*-
 //
 // Package:    SiPixelCalibConfigurationObjectMaker
 // Class:      SiPixelCalibConfigurationObjectMaker
@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Wed Sep 19 13:43:52 CEST 2007
-// $Id: SiPixelCalibConfigurationObjectMaker.cc,v 1.2 2007/09/27 18:27:51 fblekman Exp $
+// $Id: SiPixelCalibConfigurationObjectMaker.cc,v 1.3 2007/10/03 13:45:00 fblekman Exp $
 //
 //
 

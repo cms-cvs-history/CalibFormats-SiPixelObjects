@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Thu Sep 20 12:13:20 CEST 2007
-// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.4 2007/10/03 13:45:00 fblekman Exp $
+// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.5 2007/10/24 13:53:25 fblekman Exp $
 //
 //
 
@@ -96,8 +96,8 @@ SiPixelCalibConfigurationReadDb::analyze(const edm::Event& iEvent, const edm::Ev
    ESHandle<SiPixelCalibConfiguration> calib;
    iSetup.get<SiPixelCalibConfigurationRcd>().get(calib);
    //   std::cout <<*calib<< std::endl;
-   std::cout << "number of triggers: " << calib->NTriggers() << std::endl;
-   std::vector<short> vcalvalues= calib->VCalValues();
+   std::cout << "number of triggers: " << calib->getNTriggers() << std::endl;
+   std::vector<short> vcalvalues= calib->getVCalValues();
    std::cout << "number of VCAL: " << vcalvalues.size() << std::endl;
    for(uint32_t i=0; i<vcalvalues.size(); ++i){
      std::cout << "Vcal values " << i << "," << i+1 << " : " << vcalvalues[i] << "," ;
@@ -107,34 +107,34 @@ SiPixelCalibConfigurationReadDb::analyze(const edm::Event& iEvent, const edm::Ev
      std::cout << std::endl;
    }
    std::cout << "column patterns:" << std::endl;
-   for(uint32_t i=0; i<calib->ColumnPattern().size(); ++i){
-     if(calib->ColumnPattern()[i]!=-1)
-       std::cout << calib->ColumnPattern()[i] ;
+   for(uint32_t i=0; i<calib->getColumnPattern().size(); ++i){
+     if(calib->getColumnPattern()[i]!=-1)
+       std::cout << calib->getColumnPattern()[i] ;
      if(i!=0)
        std::cout << " ";
-     if(calib->ColumnPattern()[i]==-1)
+     if(calib->getColumnPattern()[i]==-1)
        std::cout << "- " ;
    } 
    std::cout << std::endl;
    std::cout << "row patterns:" << std::endl;
-   for(uint32_t i=0; i<calib->RowPattern().size(); ++i){
-     if(calib->RowPattern()[i]!=-1)
-       std::cout << calib->RowPattern()[i] ;
+   for(uint32_t i=0; i<calib->getRowPattern().size(); ++i){
+     if(calib->getRowPattern()[i]!=-1)
+       std::cout << calib->getRowPattern()[i] ;
      if(i!=0)
        std::cout << " ";
-     if(calib->RowPattern()[i]==-1)
+     if(calib->getRowPattern()[i]==-1)
        std::cout << "- ";
    }
    std::cout << std::endl;
    std::cout << "list of rocs: " << std::endl;
-   for(uint32_t i=0; i<calib->ROCIds().size();++i){
-     std::cout << calib->ROCIds()[i]  ;
+   for(uint32_t i=0; i<calib->getROCIds().size();++i){
+     std::cout << calib->getROCIds()[i]  ;
      ++i;
-     if(i<calib->ROCIds().size())
-       std::cout << " \t"<< calib->ROCIds()[i];
+     if(i<calib->getROCIds().size())
+       std::cout << " \t"<< calib->getROCIds()[i];
      ++i;
-     if(i<calib->ROCIds().size())
-       std::cout << " \t"<< calib->ROCIds()[i];
+     if(i<calib->getROCIds().size())
+       std::cout << " \t"<< calib->getROCIds()[i];
      std::cout << std::endl;
    }
    
