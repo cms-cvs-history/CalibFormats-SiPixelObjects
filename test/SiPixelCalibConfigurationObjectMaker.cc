@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Wed Sep 19 13:43:52 CEST 2007
-// $Id: SiPixelCalibConfigurationObjectMaker.cc,v 1.4 2007/11/19 10:49:59 fblekman Exp $
+// $Id: SiPixelCalibConfigurationObjectMaker.cc,v 1.5 2007/12/06 14:44:19 fblekman Exp $
 //
 //
 
@@ -95,7 +95,7 @@ void SiPixelCalibConfigurationObjectMaker::analyze(const edm::Event&, const edm:
   SiPixelCalibConfiguration *myCalib = new SiPixelCalibConfiguration(fancyCalib);
    
   std::string newtag = inputfilename.substr(inputfilename.rfind("/")+1);// only take file name (lets hope that is enough..
-   std::cout << "filling content of  " << inputfilename << " in db with tag " << newtag << std::endl;
+   std::cout << "filling content of  " << inputfilename << std::endl;
    
    edm::Service<cond::service::PoolDBOutputService> poolDbService;
    
