@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/bash
 ### simple script to add information to the database. takes two arguments: the name of the .cfg file (full path pls) and the desired tag name.
 
 filename=$1
