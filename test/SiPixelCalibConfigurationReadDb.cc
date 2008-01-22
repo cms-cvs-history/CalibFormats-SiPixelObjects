@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Thu Sep 20 12:13:20 CEST 2007
-// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.5 2007/10/24 13:53:25 fblekman Exp $
+// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.6 2007/11/19 10:49:59 fblekman Exp $
 //
 //
 
@@ -22,17 +22,13 @@
 #include <memory>
 
 // user include files
-#include "FWCore/Framework/interface/Frameworkfwd.h"
 #include "FWCore/Framework/interface/EDAnalyzer.h"
 #include "FWCore/Framework/interface/EventSetup.h"
 
-#include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
 
 #include "CalibFormats/SiPixelObjects/interface/SiPixelCalibConfiguration.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/ServiceRegistry/interface/Service.h"
 #include "CondFormats/DataRecord/interface/SiPixelCalibConfigurationRcd.h"
 #include <iostream>
 //
