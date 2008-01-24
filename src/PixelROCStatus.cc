@@ -8,6 +8,7 @@
 #include <stdint.h>
 #include <set>
 #include <iostream>
+#include <cassert>
 #include "CalibFormats/SiPixelObjects/interface/PixelROCStatus.h"
 
 using namespace std;
