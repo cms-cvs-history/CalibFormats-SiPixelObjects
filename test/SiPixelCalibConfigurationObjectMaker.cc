@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Wed Sep 19 13:43:52 CEST 2007
-// $Id: SiPixelCalibConfigurationObjectMaker.cc,v 1.7 2007/12/20 17:50:43 fblekman Exp $
+// $Id: SiPixelCalibConfigurationObjectMaker.cc,v 1.8 2008/01/22 18:45:59 muzaffar Exp $
 //
 //
 
@@ -92,8 +92,7 @@ void SiPixelCalibConfigurationObjectMaker::analyze(const edm::Event&, const edm:
   pos::PixelCalibConfiguration fancyCalib(inputfilename);
   SiPixelCalibConfiguration *myCalib = new SiPixelCalibConfiguration(fancyCalib);
    
-  std::string newtag = inputfilename.substr(inputfilename.rfind("/")+1);// only take file name (lets hope that is enough..
-   std::cout << "filling content of  " << inputfilename << std::endl;
+  myCalib->setCalibrationMode(fancyCalib.mode());
    
    edm::Service<cond::service::PoolDBOutputService> poolDbService;
    
