@@ -13,7 +13,7 @@
 //
 // Original Author:  Freya Blekman
 //         Created:  Thu Sep 20 12:13:20 CEST 2007
-// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.6 2007/11/19 10:49:59 fblekman Exp $
+// $Id: SiPixelCalibConfigurationReadDb.cc,v 1.7 2008/01/22 18:45:59 muzaffar Exp $
 //
 //
 
@@ -92,6 +92,7 @@ SiPixelCalibConfigurationReadDb::analyze(const edm::Event& iEvent, const edm::Ev
    ESHandle<SiPixelCalibConfiguration> calib;
    iSetup.get<SiPixelCalibConfigurationRcd>().get(calib);
    //   std::cout <<*calib<< std::endl;
+   std::cout << "calibration type: " << calib->getCalibrationMode() << std::endl;
    std::cout << "number of triggers: " << calib->getNTriggers() << std::endl;
    std::vector<short> vcalvalues= calib->getVCalValues();
    std::cout << "number of VCAL: " << vcalvalues.size() << std::endl;
