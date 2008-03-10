@@ -1047,7 +1047,8 @@ unsigned int PixelCalibConfiguration::maxNumHitsPerROC() const
 	{
 		for ( std::vector<std::vector<unsigned int> >::const_iterator cols_itr = cols_.begin(); cols_itr != cols_.end(); cols_itr++ )
 		{
-			returnValue = max( returnValue, rows_itr->size()*cols_itr->size() );
+                        unsigned int theSize = rows_itr->size()*cols_itr->size();
+			returnValue = max( returnValue, theSize );
 		}
 	}
 	return returnValue;
