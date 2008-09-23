@@ -36,6 +36,8 @@ namespace pos{
     void setChannel(unsigned int iChannel, bool mode);
 
     void restoreBaselinAndChannelMasks();
+    void restoreControlAndModeRegister();
+
 
     // Constructor and destructor
     PixelFEDCard(); // empty
@@ -96,7 +98,7 @@ namespace pos{
     int SpecialDac;
  
     // Control register and delays for the TTCrx
-    int CoarseDel,ClkDes2,FineDes2Del;
+    int CoarseDel,ClkDes2,FineDes2Del,FineDes1Del;
  
     //Main control reg for determining the DAQ mode
     int Ccntrl; // "CtrlReg" in LAD_C
@@ -127,6 +129,8 @@ namespace pos{
     int Nbaseln_original,NCbaseln_original,SCbaseln_original,
         Sbaseln_original;
 
+    int Ccntrl_original;
+    int modeRegister_original;
 
     //VME base address 
     unsigned long FEDBASE_0, fedNumber;
