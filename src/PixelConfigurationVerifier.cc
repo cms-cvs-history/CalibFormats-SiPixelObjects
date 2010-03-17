@@ -31,7 +31,7 @@ void PixelConfigurationVerifier::checkChannelEnable(PixelFEDCard *theFEDCard,
   set<PixelChannel>::const_iterator iChannel=channels.begin();
 
 
-  map <unsigned int, unsigned int> nrocs;
+  map <int, int> nrocs;
   for(;iChannel!=channels.end();++iChannel){
     PixelHdwAddress hdw=theNameTranslation->getHdwAddress(*iChannel);
     if (fedid==hdw.fednumber()){
