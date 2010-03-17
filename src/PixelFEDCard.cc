@@ -600,10 +600,10 @@ PixelFEDCard::PixelFEDCard(string fileName):
   }
   
   //clock phases
-  fscanf(infile,"Clock Phase Bits ch   1-9:%x\n",& clkphs1_9 );
-  fscanf(infile,"Clock Phase Bits ch 10-18:%x\n",&clkphs10_18);
-  fscanf(infile,"Clock Phase Bits ch 19-27:%x\n",&clkphs19_27);
-  fscanf(infile,"Clock Phase Bits ch 28-36:%x\n",&clkphs28_36);
+  fscanf(infile,"Clock Phase Bits ch   1-9:%d\n",& clkphs1_9 );
+  fscanf(infile,"Clock Phase Bits ch 10-18:%d\n",&clkphs10_18);
+  fscanf(infile,"Clock Phase Bits ch 19-27:%d\n",&clkphs19_27);
+  fscanf(infile,"Clock Phase Bits ch 28-36:%d\n",&clkphs28_36);
   if(localDEBUG)printf("Clock Phase Bits ch    1-9:%x\n",clkphs1_9 );
   if(localDEBUG)printf("Clock Phase Bits ch  10-18:%x\n",clkphs10_18 );
   if(localDEBUG)printf("Clock Phase Bits ch  19-27:%x\n",clkphs19_27 );
@@ -677,13 +677,13 @@ PixelFEDCard::PixelFEDCard(string fileName):
   
   
   //These bits turn off(1) and on(0) channels
-  fscanf(infile,"Channel Enbable bits chnls 1-9  (on = 0):%x\n",
+  fscanf(infile,"Channel Enbable bits chnls 1-9  (on = 0):%d\n",
          &Ncntrl);
-  fscanf(infile,"Channel Enbable bits chnls 10-18(on = 0):%x\n",
+  fscanf(infile,"Channel Enbable bits chnls 10-18(on = 0):%d\n",
          &NCcntrl);
-  fscanf(infile,"Channel Enbable bits chnls 19-27(on = 0):%x\n",
+  fscanf(infile,"Channel Enbable bits chnls 19-27(on = 0):%d\n",
          &SCcntrl);
-  fscanf(infile,"Channel Enbable bits chnls 28-36(on = 0):%x\n",
+  fscanf(infile,"Channel Enbable bits chnls 28-36(on = 0):%d\n",
          &Scntrl);
   if(localDEBUG)
     printf("Channel Enbable bits chnls 1-9  (on = 0):%x\n",Ncntrl);
@@ -696,26 +696,26 @@ PixelFEDCard::PixelFEDCard(string fileName):
   
   //These are delays to the TTCrx
   fscanf(infile,"TTCrx Coarse Delay Register 2:%d\n",&CoarseDel);
-  fscanf(infile,"TTCrc      ClkDes2 Register 3:%x\n",&ClkDes2);
+  fscanf(infile,"TTCrc      ClkDes2 Register 3:%d\n",&ClkDes2);
   fscanf(infile,"TTCrc Fine Dlay ClkDes2 Reg 1:%d\n",&FineDes2Del);
   if(localDEBUG)printf("TTCrx Coarse Delay Register 2:%d\n",CoarseDel);
   if(localDEBUG)printf("TTCrc      ClkDes2 Register 3:%x\n",ClkDes2);
   if(localDEBUG)printf("TTCrc Fine Dlay ClkDes2 Reg 1:%d\n",FineDes2Del);
   
   // Control register
-  fscanf(infile,"Center Chip Control Reg:%x\n",&Ccntrl);
+  fscanf(infile,"Center Chip Control Reg:%d\n",&Ccntrl);
   printf("Control Reg:0x%x\n",Ccntrl);
   fscanf(infile,"Initial Slink DAQ mode:%d\n",&modeRegister);
   printf("Mode Reg:%d\n",modeRegister);
   
    //These bits set ADC Gain/Range 1Vpp(0) and 2Vpp(1) for channels
-  fscanf(infile,"Channel ADC Gain bits chnls  1-12(1Vpp = 0):%x\n",
+  fscanf(infile,"Channel ADC Gain bits chnls  1-12(1Vpp = 0):%d\n",
          &Nadcg);
-  fscanf(infile,"Channel ADC Gain bits chnls 13-20(1Vpp = 0):%x\n",
+  fscanf(infile,"Channel ADC Gain bits chnls 13-20(1Vpp = 0):%d\n",
          &NCadcg);
-  fscanf(infile,"Channel ADC Gain bits chnls 21-28(1Vpp = 0):%x\n",
+  fscanf(infile,"Channel ADC Gain bits chnls 21-28(1Vpp = 0):%d\n",
          &SCadcg);
-  fscanf(infile,"Channel ADC Gain bits chnls 29-36(1Vpp = 0):%x\n",
+  fscanf(infile,"Channel ADC Gain bits chnls 29-36(1Vpp = 0):%d\n",
          &Sadcg);
   if(localDEBUG)
     printf("Channel ADC Gain bits chnls  1-12(1Vpp = 0):%x\n",Nadcg);
@@ -727,13 +727,13 @@ PixelFEDCard::PixelFEDCard(string fileName):
     printf("Channel ADC Gain bits chnls 29-36(1Vpp = 0):%x\n",Sadcg);
 
        //These bits set Baseline adjustment value (common by FPGA)//can turn on by channel 
-  fscanf(infile,"Channel Baseline Enbable chnls 1-9  (on = (0x1ff<<16)+):%x\n",
+  fscanf(infile,"Channel Baseline Enbable chnls 1-9  (on = (0x1ff<<16)+):%d\n",
          &Nbaseln);
-  fscanf(infile,"Channel Baseline Enbable chnls 10-18(on = (0x1ff<<16)+):%x\n",
+  fscanf(infile,"Channel Baseline Enbable chnls 10-18(on = (0x1ff<<16)+):%d\n",
          &NCbaseln);
-  fscanf(infile,"Channel Baseline Enbable chnls 19-27(on = (0x1ff<<16)+):%x\n",
+  fscanf(infile,"Channel Baseline Enbable chnls 19-27(on = (0x1ff<<16)+):%d\n",
          &SCbaseln);
-  fscanf(infile,"Channel Baseline Enbable chnls 28-36(on = (0x1ff<<16)+):%x\n",
+  fscanf(infile,"Channel Baseline Enbable chnls 28-36(on = (0x1ff<<16)+):%d\n",
          &Sbaseln);
   if(localDEBUG)
     printf("Channel Baseline Enbable chnls 1-9  (on = (0x1ff<<16)+):%x\n",Nbaseln);
@@ -745,13 +745,13 @@ PixelFEDCard::PixelFEDCard(string fileName):
     printf("Channel Baseline Enbable chnls 28-36(on = (0x1ff<<16)+):%x\n",Sbaseln);
 
        //These bits set TBM trailer mask (common by FPGA) 
-  fscanf(infile,"TBM trailer mask chnls 1-9  (0xff = all masked):%x\n",
+  fscanf(infile,"TBM trailer mask chnls 1-9  (0xff = all masked):%d\n",
          &N_TBMmask);
-  fscanf(infile,"TBM trailer mask chnls 10-18(0xff = all masked):%x\n",
+  fscanf(infile,"TBM trailer mask chnls 10-18(0xff = all masked):%d\n",
          &NC_TBMmask);
-  fscanf(infile,"TBM trailer mask chnls 19-27(0xff = all masked):%x\n",
+  fscanf(infile,"TBM trailer mask chnls 19-27(0xff = all masked):%d\n",
          &SC_TBMmask);
-  fscanf(infile,"TBM trailer mask chnls 28-36(0xff = all masked):%x\n",
+  fscanf(infile,"TBM trailer mask chnls 28-36(0xff = all masked):%d\n",
          &S_TBMmask);
   if(localDEBUG)
     printf("TBM trailer mask chnls 1-9  (0xff = all masked):%x\n",N_TBMmask);
@@ -763,13 +763,13 @@ PixelFEDCard::PixelFEDCard(string fileName):
     printf("TBM trailer mask chnls 28-36(0xff = all masked):%x\n",S_TBMmask);
 
        //These bits set the Private fill/gap word value (common by FPGA) 
-  fscanf(infile,"Private 8 bit word chnls 1-9  :%x\n",
+  fscanf(infile,"Private 8 bit word chnls 1-9  :%d\n",
          &N_Pword);
-  fscanf(infile,"Private 8 bit word chnls 10-18:%x\n",
+  fscanf(infile,"Private 8 bit word chnls 10-18:%d\n",
          &NC_Pword);
-  fscanf(infile,"Private 8 bit word chnls 19-27:%x\n",
+  fscanf(infile,"Private 8 bit word chnls 19-27:%d\n",
          &SC_Pword);
-  fscanf(infile,"Private 8 bit word chnls 28-36:%x\n",
+  fscanf(infile,"Private 8 bit word chnls 28-36:%d\n",
          &S_Pword);
   if(localDEBUG)
     printf("Private 8 bit word chnls 1-9  :%x\n",N_Pword);
@@ -781,7 +781,7 @@ PixelFEDCard::PixelFEDCard(string fileName):
     printf("Private 8 bit word chnls 28-36:%x\n",S_Pword);
 
        //These bit sets the special dac mode for random triggers 
-  fscanf(infile,"Special Random testDAC mode (on = 0x1, off=0x0):%x\n",
+  fscanf(infile,"Special Random testDAC mode (on = 0x1, off=0x0):%d\n",
          &SpecialDac);
   if(localDEBUG)
     printf("Special Random testDAC mode (on = 0x1, off=0x0):%x\n",SpecialDac);
