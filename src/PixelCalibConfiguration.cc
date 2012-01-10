@@ -989,7 +989,7 @@ void PixelCalibConfiguration::nextFECState(std::map<unsigned int, PixelFECConfig
 
   bool changedWBC=false;
 
-  std::map<unsigned int, PixelFECConfigInterface*>::iterator iPixelFEC=pixelFECs.begin();
+  //std::map<unsigned int, PixelFECConfigInterface*>::iterator iPixelFEC=pixelFECs.begin();
   //for(;iPixelFEC!=pixelFECs.end();++iPixelFEC){
   //iPixelFEC->second->fecDebug(1);
   //}
